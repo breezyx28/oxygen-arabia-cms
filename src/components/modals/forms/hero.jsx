@@ -12,8 +12,8 @@ import { Box, Grid, Stack, TextField } from '@mui/material';
 import FileUploadInput from 'src/components/Inputs/FileUploadInput';
 import convertToFormData from 'src/helper/ConvertToFormData';
 import InputErrorAttributes from 'src/components/utils/InputErrorAttributes';
-import { HeroValidation } from '../../../logic/Validation/heroValidation';
-import { useCreateHeroMutation } from 'src/redux/endpoints/hero';
+import { MainValidation } from '../../../logic/Validation/mainValidation';
+import { useCreateHeroMutation } from 'src/redux/endpoints/main';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   '& .MuiDialogContent-root': {
@@ -31,7 +31,7 @@ export default function HeroModal() {
 
   const [hero, { data, isLoading, isSuccess, error, isError }] = useCreateHeroMutation();
 
-  const { controller, displayError } = new HeroValidation();
+  const { controller, displayError } = new MainValidation();
   const {
     register,
     handleSubmit,

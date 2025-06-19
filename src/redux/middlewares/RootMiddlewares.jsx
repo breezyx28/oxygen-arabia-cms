@@ -2,7 +2,7 @@ import { aboutPageDetailsApi } from '../endpoints/aboutPageDetails';
 import { contactPageDetailsApi } from '../endpoints/contactPageDetails';
 import { contactsApi } from '../endpoints/contacts';
 import { footerApi } from '../endpoints/footer';
-import { heroApi } from '../endpoints/hero';
+import { mainApi } from '../endpoints/main';
 import { loginApi } from '../endpoints/login';
 import { missionsApi } from '../endpoints/missions';
 import { partnersApi } from '../endpoints/partners';
@@ -20,7 +20,7 @@ export const Middlewares = [
   loginApi.middleware,
   servicesApi.middleware,
   subservicesApi.middleware,
-  heroApi.middleware,
+  mainApi.middleware,
   partnersApi.middleware,
   projectsApi.middleware,
   projectPageDetailsApi.middleware,

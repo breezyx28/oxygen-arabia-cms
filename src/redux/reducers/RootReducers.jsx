@@ -2,7 +2,7 @@ import { aboutPageDetailsApi } from '../endpoints/aboutPageDetails';
 import { contactPageDetailsApi } from '../endpoints/contactPageDetails';
 import { contactsApi } from '../endpoints/contacts';
 import { footerApi } from '../endpoints/footer';
-import { heroApi } from '../endpoints/hero';
+import { mainApi } from '../endpoints/main';
 import { loginApi } from '../endpoints/login';
 import { missionsApi } from '../endpoints/missions';
 import { partnersApi } from '../endpoints/partners';
@@ -19,7 +19,7 @@ export const Reducers = {
   [loginApi.reducerPath]: loginApi.reducer,
   [servicesApi.reducerPath]: servicesApi.reducer,
   [subservicesApi.reducerPath]: subservicesApi.reducer,
-  [heroApi.reducerPath]: heroApi.reducer,
+  [mainApi.reducerPath]: mainApi.reducer,
   [partnersApi.reducerPath]: partnersApi.reducer,
   [projectsApi.reducerPath]: projectsApi.reducer,
   [projectPageDetailsApi.reducerPath]: projectPageDetailsApi.reducer,

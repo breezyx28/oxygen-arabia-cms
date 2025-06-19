@@ -5,63 +5,63 @@ import { prepareHeaders } from '../ApiConfig';
 import convertToFormData from 'src/helper/ConvertToFormData';
 
 // Define a service using a base URL and expected endpoints
-export const heroApi = createApi({
-  reducerPath: 'heroApi',
-  tagTypes: ['Hero'],
+export const mainApi = createApi({
+  reducerPath: 'mainApi',
+  tagTypes: ['Main'],
   baseQuery: fetchBaseQuery({ baseUrl: `${API_URL}/`, prepareHeaders }),
   endpoints: (builder) => ({
-    allHeroes: builder.query({
+    allMains: builder.query({
       query: () => ({
-        url: 'heroes',
+        url: 'mains',
       }),
       // transformResponse: ({ data }) => response.data,
-      providesTags: ['Hero'],
+      providesTags: ['Main'],
     }),
-    lastHero: builder.query({
+    lastMain: builder.query({
       query: () => ({
-        url: 'last-hero',
+        url: 'last-main',
       }),
       transformResponse: (response) => response.data,
-      providesTags: ['Hero'],
+      providesTags: ['Main'],
     }),
-    getHero: builder.query({
+    getMain: builder.query({
       query: (id) => ({
-        url: 'heroes/' + id,
+        url: 'mains/' + id,
       }),
       // transformResponse: ({ data }) => response.data,
-      providesTags: ['Hero'],
+      providesTags: ['Main'],
     }),
-    createHero: builder.mutation({
+    createMain: builder.mutation({
       query(body) {
         return {
-          url: 'heroes',
+          url: 'mains',
           method: 'POST',
           body,
         };
       },
-      invalidatesTags: ['Hero'],
+      invalidatesTags: ['Main'],
       // transformResponse: ({ data }) => response,
     }),
-    updateHero: builder.mutation({
+    updateMain: builder.mutation({
       query({ id, body }) {
         return {
-          url: 'heroes/' + id,
+          url: 'mains/' + id,
           method: 'POST',
           body: convertToFormData(body),
         };
       },
-      invalidatesTags: ['Hero'],
+      invalidatesTags: ['Main'],
       // transformResponse: ({ data }) => response,
     }),
-    deleteHero: builder.mutation({
+    deleteMain: builder.mutation({
       query({ id, ...body }) {
         return {
-          url: 'heroes/' + id,
+          url: 'mains/' + id,
           method: 'DELETE',
           body,
         };
       },
-      invalidatesTags: ['Hero'],
+      invalidatesTags: ['Main'],
       // transformResponse: ({ data }) => response,
     }),
   }),
@@ -69,4 +69,4 @@ export const heroApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useAllHeroesQuery, useLastHeroQuery, useCreateHeroMutation, useDeleteHeroMutation, useGetHeroQuery, useUpdateHeroMutation } = heroApi;
+export const { useAllMainsQuery, useUpdateMainMutation, useCreateMainMutation, useDeleteMainMutation, useGetMainQuery, useLastMainQuery } = mainApi;

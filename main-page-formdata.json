@@ -1,0 +1,146 @@
+{
+  "hero_cover": {},
+  "hero_title": "Build Amazing Customer Experiences",
+  "hero_subtitle": "Transform customer experience on a Unified Customer Experience Management platform designed to help you acquire, retain, and grow your customers.",
+  "hero_cta_title": "Get Started Now",
+  "hero_cta_link": "http://oxygenarabia.com/",
+  "hero_slider_title": "Trusted by innovators and forward-thinking companies:",
+  "section_1_title": "Lorem ipsum dolor sit amet consectetur.",
+  "section_1_subtitle": "delivers personalized experiences throughout the entire customer journey.",
+  "section_1_card_1_title": "Unified All Customer Interactions",
+  "section_1_card_1_subtitle": "Meet customers where they are and serve them through any channel: Voice, Live Chat, Messaging Apps, SMS, Email, Social, Reviews, Video.",
+  "section_1_card_1_cta": "http://oxygenarabia.com/",
+  "section_1_card_2_title": "Unified All Customer Interactions",
+  "section_1_card_2_subtitle": "Meet customers where they are and serve them through any channel: Voice, Live Chat, Messaging Apps, SMS, Email, Social, Reviews, Video.",
+  "section_1_card_2_cta": "http://oxygenarabia.com/",
+  "section_1_card_3_title": "Unified All Customer Interactions",
+  "section_1_card_3_subtitle": "Meet customers where they are and serve them through any channel: Voice, Live Chat, Messaging Apps, SMS, Email, Social, Reviews, Video.",
+  "section_1_card_3_cta": "http://oxygenarabia.com/",
+  "section_2_title": "Our Application",
+  "section_2_subtitle": "1,150 apps  405,800 screens  81,700 flows",
+  "section_3_title": "Why Oxygen",
+  "section_3_card_1_icon": {},
+  "section_3_card_1_title": "Unified Platform",
+  "section_3_card_1_cta": "http://oxygenarabia.com/",
+  "section_3_card_2_icon": {},
+  "section_3_card_2_title": "AI & Automation",
+  "section_3_card_2_cta": "http://oxygenarabia.com/",
+  "section_3_card_3_icon": {},
+  "section_3_card_3_title": "Future-Ready",
+  "section_3_card_3_cta": "http://oxygenarabia.com/",
+  "section_4_cover": {},
+  "section_4_title": "Say goodbye to siloed solutions and get started with the unified customer experience platform.",
+  "section_4_cta_title": "Get Personalized Demo",
+  "section_4_cta_link": "http://oxygenarabia.com",
+  "section_5_title": "Section 5",
+  "section_5_card_img": {},
+  "section_6_title": "The world's best businesses deliver",
+  "hero_card_1": [
+    {
+      "title": "GROW CUSTOMER LIFETIME VALUE",
+      "subtitle": "Engage customers anywhere, anytime, across any channel with personalized, context-driven support."
+    },
+    {
+      "title": "GROW CUSTOMER LIFETIME VALUE",
+      "subtitle": "Engage customers anywhere, anytime, across any channel with personalized, context-driven support."
+    },
+    {
+      "title": "GROW CUSTOMER LIFETIME VALUE",
+      "subtitle": "Engage customers anywhere, anytime, across any channel with personalized, context-driven support."
+    }
+  ],
+  "hero_card_2": [
+    {
+      "title": "TrustRadius",
+      "subtitle": "#1 Most Loved onTrustRadius"
+    },
+    {
+      "title": "TrustRadius",
+      "subtitle": "#1 Most Loved onTrustRadius"
+    },
+    {
+      "title": "TrustRadius",
+      "subtitle": "#1 Most Loved onTrustRadius"
+    }
+  ],
+  "hero_slider_imgs": [{}, {}, {}, {}],
+  "section_2_icons": [{}, {}, {}, {}, {}, {}, {}],
+  "section_3_card_1_features": [
+    "Seamless interactions and conversations across all traditional, digital and social channels",
+    "Personalized customer journey and cross-channel dialogue enhances the customer experience",
+    "Unified internal interfaces across customer-facing functions"
+  ],
+  "section_3_card_2_features": [
+    "Customer interaction data connected across channels for 360 degree view in real time",
+    "Intelligent automation that’s easy to deploy, control, and optimize",
+    "Optimize customer journeys with AI to deliver immediate value"
+  ],
+  "section_3_card_3_features": [
+    "Open platform built on REST APIs enables continuous innovation, infinite scalability",
+    "Global services architecture is secure, compliant and eliminates planned downtime",
+    "Cloud native, deployable in hybrid and private environments for deep regulatory requirements"
+  ],
+  "section_5_card_card": [
+    {
+      "title": "Companies with the highest customer satisfaction scores return double the shareholder value and 3x higher growth than their peers.",
+      "subtitle": "(PWC: Experience is everything. Get it right.)"
+    },
+    {
+      "title": "Companies with the highest customer satisfaction scores return double the shareholder value and 3x higher growth than their peers.",
+      "subtitle": "(PWC: Experience is everything. Get it right.)"
+    },
+    {
+      "title": "Companies with the highest customer satisfaction scores return double the shareholder value and 3x higher growth than their peers.",
+      "subtitle": "(PWC: Experience is everything. Get it right.)"
+    },
+    {
+      "title": "Companies with the highest customer satisfaction scores return double the shareholder value and 3x higher growth than their peers.",
+      "subtitle": "(PWC: Experience is everything. Get it right.)"
+    }
+  ],
+  "section_6_slider": [
+    {
+      "type": "text",
+      "icon": "",
+      "text_1_title": "860M+",
+      "text_1_subtitle": "location",
+      "text_2_title": "120",
+      "text_2_subtitle": "Countries",
+      "cta_title": "Read the case study",
+      "cta_link": "http://oxygenarabia.com"
+    },
+    {
+      "type": "img",
+      "icon": {},
+      "text_1_title": "",
+      "text_1_subtitle": "",
+      "text_2_title": "",
+      "text_2_subtitle": "",
+      "cta_title": "Read the case study",
+      "cta_link": "http://oxygenarabia.com"
+    },
+    {
+      "type": "text",
+      "icon": "",
+      "text_1_title": "860M+",
+      "text_1_subtitle": "location",
+      "text_2_title": "120",
+      "text_2_subtitle": "Countries",
+      "cta_title": "Read the case study",
+      "cta_link": "http://oxygenarabia.com"
+    },
+    {
+      "type": "img",
+      "icon": {},
+      "text_1_title": "",
+      "text_1_subtitle": "",
+      "text_2_title": "",
+      "text_2_subtitle": "",
+      "cta_title": "Read the case study",
+      "cta_link": "http://oxygenarabia.com"
+    }
+  ],
+  "section_3_subtitle": "An integrated solution that drives competitive advantage in CX.",
+  "section_5_subtitle": "The stakes for a superior customer experience have never been higher.",
+  "section_6_subtitle": "amazing experiences using oxygen"
+}

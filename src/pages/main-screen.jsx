@@ -1,17 +1,17 @@
 import { Helmet } from 'react-helmet-async';
-import { HeroView } from 'src/sections/heroes/view';
+import MainPage from 'src/sections/heroes/view/main-view';
 
 
 // ----------------------------------------------------------------------
 
-export default function HeroesPage() {
+export default function MainScreenPage() {
   return (
     <>
       <Helmet>
-        <title> Hero | Oxygen Arabia </title>
+        <title> Main Screen | Oxygen Arabia </title>
       </Helmet>
 
-      <HeroView />
+      <MainPage />
     </>
   );
 }

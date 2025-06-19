@@ -1,1 +1,1 @@
-export { default as HeroView } from './hero-view';
+export { default as MainView } from './main-view';

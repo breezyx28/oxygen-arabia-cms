@@ -9,7 +9,7 @@ export const ContactPageDetailsPage = lazy(() => import('src/pages/contact-page-
 export const AboutPageDetailsPage = lazy(() => import('src/pages/about-page-details'));
 export const ProjectPageDetailsPage = lazy(() => import('src/pages/project-page-details'));
 
-export const HeroesPage = lazy(() => import('src/pages/heroes'));
+export const MainPage = lazy(() => import('src/pages/main-screen'));
 export const MissionPage = lazy(() => import('src/pages/missions'));
 export const PartnersPage = lazy(() => import('src/pages/partners'));
 export const ProjectsPage = lazy(() => import('src/pages/projects'));
@@ -40,7 +40,7 @@ export default function Router() {
         {
           path: "dashboard", children: [
             { path: 'profile', element: <ProfilePage /> },
-            { path: 'hero', element: <HeroesPage /> },
+            { path: 'main-screen', element: <MainPage /> },
             { path: 'missions', element: <MissionPage /> },
             { path: 'contact', element: <ContactPage /> },
             { path: 'contact-page', element: <ContactPageDetailsPage /> },
