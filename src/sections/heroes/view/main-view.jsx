@@ -259,8 +259,6 @@ export default function MainPage() {
                   InputLabelProps={{ shrink: true }}
                   {...register('section_1_card_1_subtitle')}
                   label="Card 1 Subtitle"
-                  multiline
-                  rows={2}
                   {...InputErrorAttributes({ inputName: 'section_1_card_1_subtitle', yupError: yupErrors })}
                 />
               </Grid>
@@ -292,8 +290,6 @@ export default function MainPage() {
                   InputLabelProps={{ shrink: true }}
                   {...register('section_1_card_2_subtitle')}
                   label="Card 2 Subtitle"
-                  multiline
-                  rows={2}
                   {...InputErrorAttributes({ inputName: 'section_1_card_2_subtitle', yupError: yupErrors })}
                 />
               </Grid>
@@ -325,8 +321,6 @@ export default function MainPage() {
                   InputLabelProps={{ shrink: true }}
                   {...register('section_1_card_3_subtitle')}
                   label="Card 3 Subtitle"
-                  multiline
-                  rows={2}
                   {...InputErrorAttributes({ inputName: 'section_1_card_3_subtitle', yupError: yupErrors })}
                 />
               </Grid>
