@@ -23,7 +23,7 @@ export default function SingleFileUpload({
   setValue = () => null,
   ...restProps
 }) {
-  const [imageUrl, setImageUrl] = React.useState(showUrl || null);
+  const [imageUrl, setImageUrl] = React.useState(null);
 
   const handleFileChange = (e) => {
     const file = e.currentTarget?.files[0];
@@ -34,6 +34,9 @@ export default function SingleFileUpload({
       setValue(name, file); // Set the file value
     }
   };
+  React.useMemo(() => {
+    if (showUrl) setImageUrl(showUrl)
+  }, [showUrl])
 
   return (
     <Box>

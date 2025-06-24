@@ -13,6 +13,7 @@ import InputErrorAttributes from 'src/components/utils/InputErrorAttributes';
 import { useLastMainQuery, useUpdateMainMutation, useCreateMainMutation } from 'src/redux/endpoints/main';
 import { MainValidation } from 'src/logic/Validation/mainValidation';
 import { objectToFormData } from 'src/utils/objectToFormData';
+import { removeStringFileKeys } from 'src/utils/removeStringFileKeys';
 
 // Import reusable components
 import CardInput from '../components/CardInput';
@@ -46,15 +47,28 @@ export default function MainPage() {
       ...values,
     }
 
-    console.log('getDataOnly: ', getDataOnly);
+    let excludedData = [
+      'hero_cover',
+      'hero_slider_imgs',
+      'section_2_icons',
+      'section_3_card_1_icon',
+      'section_3_card_2_icon',
+      'section_3_card_3_icon',
+      'section_4_cover',
+      'section_5_card_img',
+      //  'section_6_slider.*.icon' // you can use this form of data
+    ];
 
-    const formData = objectToFormData(getDataOnly);
+    console.log('getDataOnly: ', getDataOnly);
 
     if (!lastMainLoading) {
       if (lastMain) {
-        updateMain({ id: lastMain?.id, body: formData });
+        let newFiltered = removeStringFileKeys(excludedData, getDataOnly)
+        console.log('after-filter: ', newFiltered);
+
+        updateMain({ id: lastMain?.id, body: objectToFormData(newFiltered) });
       } else {
-        addMain(formData);
+        addMain(objectToFormData(getDataOnly));
       }
     } else {
       showToast('Please wait for the data to load')
@@ -81,25 +95,13 @@ export default function MainPage() {
     }
   }, [error])
 
-  // React.useEffect(() => {
-  //   if (lastMain) {
-  //     reset(lastMain);
-  //     setValue('image', '')
-  //     setValue('sm_img', '')
+  React.useEffect(() => {
+    if (lastMain) {
+      reset(lastMain);
+      console.log('last-main: ', lastMain);
 
-  //     // Initialize array fields from lastMain data
-  //     if (lastMain.hero_card_1) setHeroCard1(JSON.parse(lastMain.hero_card_1));
-  //     if (lastMain.hero_card_2) setHeroCard2(JSON.parse(lastMain.hero_card_2));
-  //     if (lastMain.hero_cover) setHeroCover(JSON.parse(lastMain.hero_cover));
-  //     if (lastMain.hero_slider_imgs) setHeroSliderImgs(JSON.parse(lastMain.hero_slider_imgs));
-  //     if (lastMain.section_2_icons) setSection2Icons(JSON.parse(lastMain.section_2_icons));
-  //     if (lastMain.section_3_card_1_features) setSection3Card1Features(JSON.parse(lastMain.section_3_card_1_features));
-  //     if (lastMain.section_3_card_2_features) setSection3Card2Features(JSON.parse(lastMain.section_3_card_2_features));
-  //     if (lastMain.section_3_card_3_features) setSection3Card3Features(JSON.parse(lastMain.section_3_card_3_features));
-  //     if (lastMain.section_5_card_card) setSection5Card(JSON.parse(lastMain.section_5_card_card));
-  //     if (lastMain.section_6_slider) setSection6Slider(JSON.parse(lastMain.section_6_slider));
-  //   }
-  // }, [lastMain])
+    }
+  }, [lastMain])
 
   React.useEffect(() => {
     console.log('data: ', data);
@@ -187,7 +189,7 @@ export default function MainPage() {
 
 
                 <CardInput
-                  defaultValue={null}
+                  defaultValue={lastMain?.hero_card_1 ?? null}
                   setValue={setValue}
                   inputName={"hero_card_1"}
                   yupErrors={yupErrors}
@@ -210,7 +212,7 @@ export default function MainPage() {
 
 
                 <CardInput
-                  defaultValue={null}
+                  defaultValue={lastMain?.hero_card_2 ?? null}
                   setValue={setValue}
                   inputName={"hero_card_2"}
                   yupErrors={yupErrors}
@@ -220,7 +222,7 @@ export default function MainPage() {
 
               <Grid item xs={12}>
                 <MultiFileUpload
-                  defaultValue={null}
+                  defaultValue={lastMain?.hero_slider_imgs ?? null}
                   inputName={'hero_slider_imgs'}
                   setValue={setValue}
                   yupErrors={yupErrors}
@@ -352,7 +354,7 @@ export default function MainPage() {
               <Grid item xs={12}>
 
                 <MultiFileUpload
-                  defaultValue={null}
+                  defaultValue={lastMain?.section_2_icons ?? null}
                   inputName={'section_2_icons'}
                   setValue={setValue}
                   yupErrors={yupErrors}
@@ -366,12 +368,13 @@ export default function MainPage() {
 
           <Card sx={{ p: 3 }}>
             <Typography variant="h6" sx={{ mb: 3 }}>Section 3</Typography>
-            <SectionTitle
-              title=""
-              register={register}
-              yupErrors={yupErrors}
-              titleField="section_3_title"
-              subtitleField="section_3_subtitle"
+
+            <TextField
+              fullWidth
+              InputLabelProps={{ shrink: true }}
+              {...register('section_3_title')}
+              label="Section 3 Title"
+              {...InputErrorAttributes({ inputName: 'section_3_title', yupError: yupErrors })}
             />
 
             <Grid container spacing={2}>
@@ -396,6 +399,7 @@ export default function MainPage() {
                   label="Card 1 Title"
                   {...InputErrorAttributes({ inputName: 'section_3_card_1_title', yupError: yupErrors })}
                 />
+
               </Grid>
 
               <Grid item xs={12} md={4}>
@@ -412,7 +416,7 @@ export default function MainPage() {
               <Grid item xs={12}>
                 <Typography variant="subtitle1">Card 1 Features</Typography>
                 <MultiInputs
-                  defaultValue={null}
+                  defaultValue={lastMain?.section_3_card_1_features ?? null}
                   inputName={'section_3_card_1_features'}
                   setValue={setValue}
                   yupErrors={yupErrors}
@@ -457,7 +461,7 @@ export default function MainPage() {
                 <Typography variant="subtitle1">Card 2 Features</Typography>
 
                 <MultiInputs
-                  defaultValue={null}
+                  defaultValue={lastMain?.section_3_card_2_features ?? null}
                   inputName={'section_3_card_2_features'}
                   setValue={setValue}
                   yupErrors={yupErrors}
@@ -502,7 +506,7 @@ export default function MainPage() {
                 <Typography variant="subtitle1">Card 3 Features</Typography>
 
                 <MultiInputs
-                  defaultValue={null}
+                  defaultValue={lastMain?.section_3_card_3_features ?? null}
                   inputName={'section_3_card_3_features'}
                   setValue={setValue}
                   yupErrors={yupErrors}
@@ -562,12 +566,13 @@ export default function MainPage() {
 
           <Card sx={{ p: 3 }}>
             <Typography variant="h6" sx={{ mb: 3 }}>Section 5</Typography>
-            <SectionTitle
-              title=""
-              register={register}
-              yupErrors={yupErrors}
-              titleField="section_5_title"
-              subtitleField="section_5_subtitle"
+
+            <TextField
+              fullWidth
+              InputLabelProps={{ shrink: true }}
+              {...register('section_5_title')}
+              label="Section 5 Title"
+              {...InputErrorAttributes({ inputName: 'section_5_title', yupError: yupErrors })}
             />
 
             <Grid container spacing={2}>
@@ -588,7 +593,7 @@ export default function MainPage() {
               <Grid item xs={12}>
                 <Typography variant="subtitle1">Section 5 Card</Typography>
                 <CardInput
-                  defaultValue={null}
+                  defaultValue={lastMain?.section_5_card_card ?? null}
                   setValue={setValue}
                   inputName={"section_5_card_card"}
                   yupErrors={yupErrors}
@@ -612,7 +617,7 @@ export default function MainPage() {
               <Grid item xs={12}>
                 <Typography variant="subtitle1">Section 6 Slider Items</Typography>
                 <SliderItem
-                  defaultValue={null}
+                  defaultValue={lastMain?.section_6_slider ?? null}
                   setValue={setValue}
                   inputName={'section_6_slider'}
                   yupErrors={yupErrors}

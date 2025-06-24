@@ -13,7 +13,11 @@ const MultiFileUpload = ({
     errorField = 'file',
     inputName
 }) => {
-    const [files, setFiles] = useState([]);
+    const [files, setFiles] = useState(defaultValue ?? []);
+
+    React.useMemo(() => {
+        if (defaultValue) setFiles(defaultValue)
+    }, [defaultValue])
 
     const removeArrayItem = (array, setArray, index) => {
         const newArray = [...array];
@@ -54,10 +58,24 @@ const MultiFileUpload = ({
                             <Button
                                 size="small"
                                 color="error"
-                                sx={{ position: 'absolute', top: 5, right: 5, minWidth: 'auto', p: 0.5 }}
+                                sx={{
+                                    position: 'absolute',
+                                    top: 5,
+                                    right: 5,
+                                    minWidth: 'auto',
+                                    p: 0.5,
+                                    bgcolor: 'background.paper',
+                                    borderRadius: '50%',
+                                    boxShadow: 2,
+                                    zIndex: 2,
+                                    '&:hover': {
+                                        bgcolor: 'error.main',
+                                        color: 'common.white',
+                                    },
+                                }}
                                 onClick={() => removeArrayItem(files, setFiles, index)}
                             >
-                                <Iconify icon="mdi:delete" width={16} />
+                                <Iconify icon="mdi:delete" width={24} height={24} />
                             </Button>
                         </Card>
                     </Grid>

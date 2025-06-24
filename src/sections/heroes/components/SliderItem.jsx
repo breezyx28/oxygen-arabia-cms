@@ -10,7 +10,11 @@ const SliderItem = ({
     yupErrors,
     addButtonText = 'Add Slider Item'
 }) => {
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState(defaultValue ?? []);
+
+    React.useMemo(() => {
+        if (defaultValue) setItems(defaultValue)
+    }, [defaultValue])
 
     const addArrayItem = (array, setArray, defaultItem = {}) => {
         setArray([...array, defaultItem]);

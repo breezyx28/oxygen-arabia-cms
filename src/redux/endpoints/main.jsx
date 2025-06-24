@@ -47,7 +47,7 @@ export const mainApi = createApi({
         return {
           url: 'mains/' + id,
           method: 'POST',
-          body: convertToFormData(body),
+          body,
         };
       },
       invalidatesTags: ['Main'],

@@ -10,7 +10,11 @@ const MultiInputs = ({
     addButtonText = 'Add Input',
     inputLabel = 'Input'
 }) => {
-    const [inputs, setInputs] = useState([]);
+    const [inputs, setInputs] = useState(defaultValue ?? []);
+
+    React.useMemo(() => {
+        if (defaultValue) setInputs(defaultValue)
+    }, [defaultValue])
 
     const addArrayItem = (array, setArray, defaultItem = '') => {
         setArray([...array, defaultItem]);
