@@ -14,6 +14,7 @@ import { statisticsApi } from '../endpoints/statistics';
 import { subservicesApi } from '../endpoints/sub-services';
 import { usersMessagesApi } from '../endpoints/usersMessages';
 import { rtkQueryErrorLogger } from './HandleGlobalErrors';
+import { formApi } from '../endpoints/form';
 
 export const Middlewares = [
   rtkQueryErrorLogger,
@@ -21,6 +22,7 @@ export const Middlewares = [
   servicesApi.middleware,
   subservicesApi.middleware,
   mainApi.middleware,
+  formApi.middleware,
   partnersApi.middleware,
   projectsApi.middleware,
   projectPageDetailsApi.middleware,

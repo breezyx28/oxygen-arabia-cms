@@ -1,5 +1,5 @@
 import { YupValidation } from 'src/logic/Validation/YupValidation';
-import { object, string, mixed, array } from 'yup';
+import { object, string, mixed, array, boolean } from 'yup';
 
 export class MainValidation extends YupValidation {
   constructor() {
@@ -36,6 +36,7 @@ export class MainValidation extends YupValidation {
     hero_slider_title: null,
 
     // Section 1
+    section_1_active: null,
     section_1_title: null,
     section_1_subtitle: null,
     section_1_card_1_title: null,
@@ -49,10 +50,12 @@ export class MainValidation extends YupValidation {
     section_1_card_3_cta: null,
 
     // Section 2
+    section_2_active: null,
     section_2_title: null,
     section_2_subtitle: null,
 
     // Section 3
+    section_3_active: null,
     section_3_title: null,
     section_3_card_1_icon: null,
     section_3_card_1_title: null,
@@ -65,16 +68,19 @@ export class MainValidation extends YupValidation {
     section_3_card_3_cta: null,
 
     // Section 4
+    section_4_active: null,
     section_4_cover: null,
     section_4_title: null,
     section_4_cta_title: null,
     section_4_cta_link: null,
 
     // Section 5
+    section_5_active: null,
     section_5_title: null,
     section_5_card_img: null,
 
     // Section 6
+    section_6_active: null,
     section_6_title: null,
 
     // Arrays
@@ -186,5 +192,12 @@ export class MainValidation extends YupValidation {
     section_3_card_3_features: array().required('Section 3 card 3 features are required'),
     section_5_card_card: array().required('Section 5 card is required'),
     section_6_slider: array().required('Section 6 slider is required'),
+
+    section_1_active: boolean().nullable(),
+    section_2_active: boolean().nullable(),
+    section_3_active: boolean().nullable(),
+    section_4_active: boolean().nullable(),
+    section_5_active: boolean().nullable(),
+    section_6_active: boolean().nullable(),
   });
 }
