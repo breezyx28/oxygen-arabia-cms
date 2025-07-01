@@ -25,6 +25,7 @@ import SectionTitle from '../components/SectionTitle';
 import ImageUpload from '../components/ImageUpload';
 import SingleFileUpload from '../components/SingleFileUpload';
 import MultiFileUpload from '../components/MultiFileUpload';
+import BannerPage from './main-banner';
 
 // Separate FormComponent import
 const FormComponent = React.lazy(() => import('src/sections/form'));
@@ -150,6 +151,11 @@ export default function MainPage() {
           />
         </Stack>
         <ServerErrorAlert errors={[error, creationError]} />
+
+        <hr style={{ marginTop: '3rem', marginBottom: '3rem' }} />
+
+        <BannerPage />
+
         <form id="form-main" method="POST" onSubmit={handleSubmit(onSubmit)} style={{ width: `100%` }}>
           <Stack spacing={5}>
             <Card sx={{ p: 3 }}>

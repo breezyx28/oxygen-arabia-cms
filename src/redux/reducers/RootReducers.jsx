@@ -14,6 +14,7 @@ import { statisticsApi } from '../endpoints/statistics';
 import { subservicesApi } from '../endpoints/sub-services';
 import { usersMessagesApi } from '../endpoints/usersMessages';
 import { formApi } from '../endpoints/form';
+import { bannerApi } from '../endpoints/banner';
 
 export const Reducers = {
   // Add the generated reducer as a specific top-level slice
@@ -21,6 +22,7 @@ export const Reducers = {
   [servicesApi.reducerPath]: servicesApi.reducer,
   [subservicesApi.reducerPath]: subservicesApi.reducer,
   [mainApi.reducerPath]: mainApi.reducer,
+  [bannerApi.reducerPath]: bannerApi.reducer,
   [formApi.reducerPath]: formApi.reducer,
   [partnersApi.reducerPath]: partnersApi.reducer,
   [projectsApi.reducerPath]: projectsApi.reducer,

@@ -15,7 +15,7 @@ const SectionTitle = ({
     return (
         <>
             <Typography variant="h6">{title}</Typography>
-            <Grid container spacing={2} sx={{ mb: 3 }}>
+            <Grid container spacing={2} sx={{ mb: 3, mt: 0.5 }}>
                 <Grid item xs={12} md={6}>
                     <TextField
                         fullWidth
