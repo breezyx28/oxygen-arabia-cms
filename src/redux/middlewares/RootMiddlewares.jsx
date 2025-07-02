@@ -35,5 +35,5 @@ export const Middlewares = [
   aboutPageDetailsApi.middleware,
   usersMessagesApi.middleware,
   statisticsApi.middleware,
-  profileApi.middleware
+  profileApi.middleware,
 ];

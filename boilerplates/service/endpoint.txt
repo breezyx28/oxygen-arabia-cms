@@ -1,0 +1,19 @@
+// Auto-generated service for {{SERVICE_NAME}}
+
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import API_URL from "../config";
+import { prepareHeaders } from "../ApiConfig";
+
+export const {{SERVICE_NAME}} = createApi({
+  reducerPath: "{{SERVICE_NAME}}",
+  baseQuery: fetchBaseQuery({ baseUrl: `${API_URL}/`, prepareHeaders }),
+  endpoints: (builder) => ({
+    example: builder.query({
+      query: () => "example-endpoint",
+    }),
+  }),
+});
+
+export const {
+  useExampleQuery,
+} = {{SERVICE_NAME}};
