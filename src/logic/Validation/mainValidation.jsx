@@ -34,6 +34,9 @@ export class MainValidation extends YupValidation {
     hero_cta_title: null,
     hero_cta_link: null,
     hero_slider_title: null,
+    hero_slider_active: null,
+    hero_card_1_active: null,
+    hero_card_2_active: null,
 
     // Section 1
     section_1_active: null,
@@ -199,5 +202,9 @@ export class MainValidation extends YupValidation {
     section_4_active: boolean().nullable(),
     section_5_active: boolean().nullable(),
     section_6_active: boolean().nullable(),
+
+    hero_slider_active: boolean().nullable(),
+    hero_card_1_active: boolean().nullable(),
+    hero_card_2_active: boolean().nullable(),
   });
 }

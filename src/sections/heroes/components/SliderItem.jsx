@@ -8,7 +8,8 @@ const SliderItem = ({
     inputName,
     setValue,
     yupErrors,
-    addButtonText = 'Add Slider Item'
+    addButtonText = 'Add Slider Item',
+    disabled = false
 }) => {
     const [items, setItems] = useState(defaultValue ?? []);
 
@@ -50,6 +51,7 @@ const SliderItem = ({
                                 native: true,
                             }}
                             {...InputErrorAttributes({ inputName: `${inputName}[${index}].type`, yupError: yupErrors })}
+                            disabled={disabled}
                         >
                             <option value="img">Image</option>
                             <option value="text">Text</option>
@@ -67,6 +69,7 @@ const SliderItem = ({
                                 error={{
                                     ...InputErrorAttributes({ inputName: `${inputName}[${index}].icon`, yupError: yupErrors }),
                                 }}
+                                disabled={disabled}
                             />
                         </Grid>
                     ) : (
@@ -78,6 +81,7 @@ const SliderItem = ({
                                     value={item.text_1_title || ''}
                                     onChange={(e) => updateArrayItem(items, setItems, index, 'text_1_title', e.target.value)}
                                     {...InputErrorAttributes({ inputName: `${inputName}[${index}].text_1_title`, yupError: yupErrors })}
+                                    disabled={disabled}
                                 />
                             </Grid>
                             <Grid item xs={12} md={2}>
@@ -87,6 +91,7 @@ const SliderItem = ({
                                     value={item.text_1_subtitle || ''}
                                     onChange={(e) => updateArrayItem(items, setItems, index, 'text_1_subtitle', e.target.value)}
                                     {...InputErrorAttributes({ inputName: `${inputName}[${index}].text_1_subtitle`, yupError: yupErrors })}
+                                    disabled={disabled}
                                 />
                             </Grid>
                             <Grid item xs={12} md={2}>
@@ -96,6 +101,7 @@ const SliderItem = ({
                                     value={item.text_2_title || ''}
                                     onChange={(e) => updateArrayItem(items, setItems, index, 'text_2_title', e.target.value)}
                                     {...InputErrorAttributes({ inputName: `${inputName}[${index}].text_2_title`, yupError: yupErrors })}
+                                    disabled={disabled}
                                 />
                             </Grid>
                             <Grid item xs={12} md={2}>
@@ -105,6 +111,7 @@ const SliderItem = ({
                                     value={item.text_2_subtitle || ''}
                                     onChange={(e) => updateArrayItem(items, setItems, index, 'text_2_subtitle', e.target.value)}
                                     {...InputErrorAttributes({ inputName: `${inputName}[${index}].text_2_subtitle`, yupError: yupErrors })}
+                                    disabled={disabled}
                                 />
                             </Grid>
                         </>
@@ -117,6 +124,7 @@ const SliderItem = ({
                             value={item.cta_title || ''}
                             onChange={(e) => updateArrayItem(items, setItems, index, 'cta_title', e.target.value)}
                             {...InputErrorAttributes({ inputName: `${inputName}[${index}].cta_title`, yupError: yupErrors })}
+                            disabled={disabled}
                         />
                     </Grid>
                     <Grid item xs={12} md={2}>
@@ -126,6 +134,7 @@ const SliderItem = ({
                             value={item.cta_link || ''}
                             onChange={(e) => updateArrayItem(items, setItems, index, 'cta_link', e.target.value)}
                             {...InputErrorAttributes({ inputName: `${inputName}[${index}].cta_link`, yupError: yupErrors })}
+                            disabled={disabled}
                         />
                     </Grid>
                     <Grid item xs={12} md={2} display="flex" alignItems="center">
@@ -133,6 +142,7 @@ const SliderItem = ({
                             variant="outlined"
                             color="error"
                             onClick={() => removeArrayItem(items, setItems, index)}
+                            disabled={disabled}
                         >
                             Remove
                         </Button>
@@ -152,6 +162,7 @@ const SliderItem = ({
                     cta_link: ''
                 })}
                 sx={{ mt: 1 }}
+                disabled={disabled}
             >
                 {addButtonText}
             </Button>

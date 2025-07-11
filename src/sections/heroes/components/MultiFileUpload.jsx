@@ -11,7 +11,8 @@ const MultiFileUpload = ({
     label = 'Add File',
     title = 'Files',
     errorField = 'file',
-    inputName
+    inputName,
+    disabled = false
 }) => {
     const [files, setFiles] = useState(defaultValue ?? []);
 
@@ -45,6 +46,7 @@ const MultiFileUpload = ({
                 error={{
                     ...InputErrorAttributes({ inputName: errorField, yupError: yupErrors }),
                 }}
+                disabled={disabled}
             />
             <Grid container spacing={2} sx={{ mt: 2 }}>
                 {files.map((img, index) => (
@@ -74,6 +76,7 @@ const MultiFileUpload = ({
                                     },
                                 }}
                                 onClick={() => removeArrayItem(files, setFiles, index)}
+                                disabled={disabled}
                             >
                                 <Iconify icon="mdi:delete" width={24} height={24} />
                             </Button>

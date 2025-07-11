@@ -1,0 +1,1 @@
+import{s as i}from"./index-203bd9a2.js";import"./index.esm-db640a3f.js";import"./FileUploadInput-2322a252.js";import{D as a}from"./IframeModal-6d30ce25.js";i(a)(({theme:o})=>({"& .MuiDialogContent-root":{padding:o.spacing(2)},"& .MuiDialogActions-root":{padding:o.spacing(1)}}));

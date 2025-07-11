@@ -8,6 +8,7 @@
     "dev": "vite",
     "start": "vite preview",
     "build": "vite build",
+    "deploy": "bash deploy.sh",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
     "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",

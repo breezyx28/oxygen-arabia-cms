@@ -23,11 +23,10 @@ export const rtkQueryErrorLogger = (api) => (next) => (action) => {
       }, 3000);
     }
 
-    // @ts-ignore
-    if (error?.status === 'FETCH_ERROR') {
-      // alert("Internet Issue ... couldn't fetch results due to internet weakness");
-      Toast({ openModal: true, message: error?.errors, type: 'error' });
-    }
+    // Show a Toast for all API errors
+    let errorMessage = error?.data?.message || error?.message || error?.errors || 'An error occurred';
+    if (Array.isArray(errorMessage)) errorMessage = errorMessage.join(', ');
+    Toast({ openModal: true, message: errorMessage, type: 'error' });
 
     console.log('global-error: ', error);
   }

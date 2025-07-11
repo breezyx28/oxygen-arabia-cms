@@ -1,24 +1,38 @@
 import path from 'path';
+import fs from 'fs';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import checker from 'vite-plugin-checker';
 import reactRefresh from '@vitejs/plugin-react-refresh';
-// import dotenv from 'dotenv';
 
-// ----------------------------------------------------------------------
-// dotenv.config({ path: '.env.production' });
+// Define the output folder
+const outputDir = 'oxygenarabia-cms';
+
+// Custom plugin to copy .htaccess after build
+function copyHtaccessPlugin() {
+  return {
+    name: 'copy-htaccess',
+    closeBundle() {
+      const source = path.resolve(process.cwd(), '.htaccess');
+      const destination = path.resolve(process.cwd(), outputDir, '.htaccess');
+      if (fs.existsSync(source)) {
+        fs.copyFileSync(source, destination);
+        console.log('✅ .htaccess copied to build folder.');
+      } else {
+        console.warn('⚠️ .htaccess file not found.');
+      }
+    },
+  };
+}
+
 export default defineConfig({
   plugins: [
     react(),
-    checker({
-      // eslint: {
-      //   lintCommand: 'eslint "./src/**/*.{js,jsx,ts,tsx}"',
-      // },
-    }),
+    checker(),
     reactRefresh(),
+    copyHtaccessPlugin(), // ✅ Add the plugin here
   ],
   resolve: {
-    // extensions: ['.js', '.jsx', '.ts', '.tsx'],
     alias: [
       {
         find: /^~(.+)/,
@@ -35,5 +49,8 @@ export default defineConfig({
   },
   preview: {
     port: 3030,
+  },
+  build: {
+    outDir: outputDir, // ✅ Output to 'oxygenarabia-cms'
   },
 });

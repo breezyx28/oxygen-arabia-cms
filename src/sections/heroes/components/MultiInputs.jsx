@@ -8,7 +8,8 @@ const MultiInputs = ({
     setValue,
     yupErrors,
     addButtonText = 'Add Input',
-    inputLabel = 'Input'
+    inputLabel = 'Input',
+    disabled = false
 }) => {
     const [inputs, setInputs] = useState(defaultValue ?? []);
 
@@ -44,6 +45,7 @@ const MultiInputs = ({
                                 setValue(inputName, newInputs);
                             }}
                             {...InputErrorAttributes({ inputName: `${inputName}[${index}]`, yupError: yupErrors })}
+                            disabled={disabled}
                         />
                     </Grid>
                     <Grid item xs={2} display="flex" alignItems="center">
@@ -51,6 +53,7 @@ const MultiInputs = ({
                             variant="outlined"
                             color="error"
                             onClick={() => removeArrayItem(inputs, setInputs, index)}
+                            disabled={disabled}
                         >
                             Remove
                         </Button>
@@ -61,6 +64,7 @@ const MultiInputs = ({
                 variant="outlined"
                 onClick={() => addArrayItem(inputs, setInputs, '')}
                 sx={{ mt: 1 }}
+                disabled={disabled}
             >
                 {addButtonText}
             </Button>

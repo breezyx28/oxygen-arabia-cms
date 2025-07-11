@@ -10,7 +10,8 @@ const SectionTitle = ({
     titleLabel = 'Title',
     subtitleLabel = 'Subtitle',
     titleField = 'title',
-    subtitleField = 'subtitle'
+    subtitleField = 'subtitle',
+    disabled = false
 }) => {
     return (
         <>
@@ -23,6 +24,7 @@ const SectionTitle = ({
                         {...register(titleField)}
                         label={titleLabel}
                         {...InputErrorAttributes({ inputName: titleField, yupError: yupErrors })}
+                        disabled={disabled}
                     />
                 </Grid>
 
@@ -35,6 +37,7 @@ const SectionTitle = ({
                         // multiline
                         // rows={2}
                         {...InputErrorAttributes({ inputName: subtitleField, yupError: yupErrors })}
+                        disabled={disabled}
                     />
                 </Grid>
             </Grid>

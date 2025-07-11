@@ -21,6 +21,7 @@ export default function SingleFileUpload({
   error,
   showUrl, // Optional prop for image URL
   setValue = () => null,
+  disabled = false,
   ...restProps
 }) {
   const [imageUrl, setImageUrl] = React.useState(null);
@@ -58,6 +59,7 @@ export default function SingleFileUpload({
           variant="contained"
           tabIndex={-1}
           startIcon={<CloudUploadIcon />}
+          disabled={disabled}
         >
           {label ?? 'Upload file'}
           <VisuallyHiddenInput
@@ -65,6 +67,7 @@ export default function SingleFileUpload({
             name={name}
             onChange={handleFileChange} // Handle file change
             {...restProps}
+            disabled={disabled}
           />
         </Button>
         {error?.error ? <FormHelperText>{error?.helperText}</FormHelperText> : ''}

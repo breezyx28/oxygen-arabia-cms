@@ -56,6 +56,17 @@ export default function MainPage() {
     formState: { errors: yupErrors },
   } = controller();
 
+  // Watch active switches for disabling inputs
+  const hero_card_1_active = watch('hero_card_1_active');
+  const hero_card_2_active = watch('hero_card_2_active');
+  const hero_slider_active = watch('hero_slider_active');
+  const section_1_active = watch('section_1_active');
+  const section_2_active = watch('section_2_active');
+  const section_3_active = watch('section_3_active');
+  const section_4_active = watch('section_4_active');
+  const section_5_active = watch('section_5_active');
+  const section_6_active = watch('section_6_active');
+
   const onSubmit = async (values) => {
     let getDataOnly = {
       ...values,
@@ -86,6 +97,13 @@ export default function MainPage() {
     } else {
       showToast('Please wait for the data to load')
     }
+  };
+
+  const onValidationError = (errors) => {
+    setButtonError(true);
+    const errorFields = Object.keys(errors);
+    const errorNames = errorFields.map((field) => errors[field]?.ref?.name || field);
+    showToast(`Validation error at: ${errorNames.join(', ')}`, 'error');
   };
 
   // -----------------------------------------------------------------------
@@ -129,6 +147,8 @@ export default function MainPage() {
     }
   }, [data])
 
+  const [buttonError, setButtonError] = useState(false);
+
   return (
     <>
       <Container>
@@ -156,7 +176,12 @@ export default function MainPage() {
 
         <BannerPage />
 
-        <form id="form-main" method="POST" onSubmit={handleSubmit(onSubmit)} style={{ width: `100%` }}>
+        <form
+          id="form-main"
+          method="POST"
+          onSubmit={handleSubmit(onSubmit, onValidationError)}
+          style={{ width: `100%` }}
+        >
           <Stack spacing={5}>
             <Card sx={{ p: 3 }}>
 
@@ -206,19 +231,6 @@ export default function MainPage() {
                 </Grid>
 
                 <Grid item xs={12}>
-                  <Typography variant="subtitle1">Hero Card 1</Typography>
-
-
-                  <CardInput
-                    defaultValue={lastMain?.hero_card_1 ?? null}
-                    setValue={setValue}
-                    inputName={"hero_card_1"}
-                    yupErrors={yupErrors}
-                    addButtonText="Add Hero Card 1 Item"
-                  />
-                </Grid>
-
-                <Grid item xs={12}>
                   <TextField
                     fullWidth
                     InputLabelProps={{ shrink: true }}
@@ -227,32 +239,108 @@ export default function MainPage() {
                     {...InputErrorAttributes({ inputName: 'hero_slider_title', yupError: yupErrors })}
                   />
                 </Grid>
-
-                <Grid item xs={12}>
-                  <Typography variant="subtitle1">Hero Card 2</Typography>
-
-
-                  <CardInput
-                    defaultValue={lastMain?.hero_card_2 ?? null}
-                    setValue={setValue}
-                    inputName={"hero_card_2"}
-                    yupErrors={yupErrors}
-                    addButtonText="Add Hero Card 2 Item"
-                  />
-                </Grid>
-
-                <Grid item xs={12}>
-                  <MultiFileUpload
-                    defaultValue={lastMain?.hero_slider_imgs ?? null}
-                    inputName={'hero_slider_imgs'}
-                    setValue={setValue}
-                    yupErrors={yupErrors}
-                    label="Add Hero Slider Image"
-                    title="Hero Slider Images"
-                    errorField="hero_slider_imgs"
-                  />
-                </Grid>
               </Grid>
+            </Card>
+
+            <Card sx={{ p: 3 }}>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
+                <Typography variant="subtitle1">Hero Card 1</Typography>
+                <Controller
+                  name="hero_card_1_active"
+                  control={control}
+                  render={({ field: { onChange, value } }) => (
+                    <FormControlLabel
+                      control={
+                        <Switch
+                          checked={value === undefined ? true : !!value}
+                          onChange={(e) => {
+                            onChange(e.target.checked)
+                            setValue('hero_card_1_active', e.target.checked ? true : false)
+                          }
+                          }
+                        />
+                      }
+                      label="Active"
+                    />
+                  )}
+                />
+              </Box>
+              <CardInput
+                defaultValue={lastMain?.hero_card_1 ?? null}
+                setValue={setValue}
+                inputName={"hero_card_1"}
+                yupErrors={yupErrors}
+                addButtonText="Add Hero Card 1 Item"
+                disabled={hero_card_1_active === undefined ? false : !hero_card_1_active}
+              />
+            </Card>
+
+            <Card sx={{ p: 3 }}>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
+                <Typography variant="subtitle1">Hero Card 2</Typography>
+                <Controller
+                  name="hero_card_2_active"
+                  control={control}
+                  render={({ field: { onChange, value } }) => (
+                    <FormControlLabel
+                      control={
+                        <Switch
+                          checked={value === undefined ? true : !!value}
+                          onChange={(e) => {
+                            onChange(e.target.checked)
+                            setValue('hero_card_2_active', e.target.checked ? true : false)
+                          }
+                          }
+                        />
+                      }
+                      label="Active"
+                    />
+                  )}
+                />
+              </Box>
+              <CardInput
+                defaultValue={lastMain?.hero_card_2 ?? null}
+                setValue={setValue}
+                inputName={"hero_card_2"}
+                yupErrors={yupErrors}
+                addButtonText="Add Hero Card 2 Item"
+                disabled={hero_card_2_active === undefined ? false : !hero_card_2_active}
+              />
+            </Card>
+
+            <Card sx={{ p: 3 }}>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
+                <Typography variant="h6">Hero Slider</Typography>
+                <Controller
+                  name="hero_slider_active"
+                  control={control}
+                  render={({ field: { onChange, value } }) => (
+                    <FormControlLabel
+                      control={
+                        <Switch
+                          checked={value === undefined ? true : !!value}
+                          onChange={(e) => {
+                            onChange(e.target.checked)
+                            setValue('hero_slider_active', e.target.checked ? true : false)
+                          }
+                          }
+                        />
+                      }
+                      label="Active"
+                    />
+                  )}
+                />
+              </Box>
+              <MultiFileUpload
+                defaultValue={lastMain?.hero_slider_imgs ?? null}
+                inputName={'hero_slider_imgs'}
+                setValue={setValue}
+                yupErrors={yupErrors}
+                label="Add Hero Slider Image"
+                title="Hero Slider Images"
+                errorField="hero_slider_imgs"
+                disabled={hero_slider_active === undefined ? false : !hero_slider_active}
+              />
             </Card>
 
             <Card sx={{ p: 3 }}>
@@ -284,6 +372,7 @@ export default function MainPage() {
                 yupErrors={yupErrors}
                 titleField="section_1_title"
                 subtitleField="section_1_subtitle"
+                disabled={section_1_active === undefined ? false : !section_1_active}
               />
 
               <Grid container spacing={2}>
@@ -294,6 +383,7 @@ export default function MainPage() {
                     {...register('section_1_card_1_title')}
                     label="Card 1 Title"
                     {...InputErrorAttributes({ inputName: 'section_1_card_1_title', yupError: yupErrors })}
+                    disabled={section_1_active === undefined ? false : !section_1_active}
                   />
                 </Grid>
 
@@ -412,6 +502,7 @@ export default function MainPage() {
                 yupErrors={yupErrors}
                 titleField="section_2_title"
                 subtitleField="section_2_subtitle"
+                disabled={section_2_active === undefined ? false : !section_2_active}
               />
 
               <Grid container spacing={2}>
@@ -425,6 +516,7 @@ export default function MainPage() {
                     label="Add Section 2 Icon"
                     title="Section 2 Icons"
                     errorField="section_2_icons"
+                    disabled={section_2_active === undefined ? false : !section_2_active}
                   />
                 </Grid>
               </Grid>
@@ -461,6 +553,7 @@ export default function MainPage() {
                 {...register('section_3_title')}
                 label="Section 3 Title"
                 {...InputErrorAttributes({ inputName: 'section_3_title', yupError: yupErrors })}
+                disabled={section_3_active === undefined ? false : !section_3_active}
               />
 
               <Grid container spacing={2}>
@@ -474,6 +567,7 @@ export default function MainPage() {
                     error={{
                       ...InputErrorAttributes({ inputName: 'section_3_card_1_icon', yupError: yupErrors }),
                     }}
+                    disabled={section_3_active === undefined ? false : !section_3_active}
                   />
                 </Grid>
 
@@ -507,6 +601,7 @@ export default function MainPage() {
                     inputName={'section_3_card_1_features'}
                     setValue={setValue}
                     yupErrors={yupErrors}
+                    disabled={section_3_active === undefined ? false : !section_3_active}
                   />
                 </Grid>
 
@@ -635,6 +730,7 @@ export default function MainPage() {
                   {...register('section_4_title')}
                   label={'Section 4 Title'}
                   {...InputErrorAttributes({ inputName: 'section_4_title', yupError: yupErrors })}
+                  disabled={section_4_active === undefined ? false : !section_4_active}
                 />
               </Grid>
 
@@ -649,6 +745,7 @@ export default function MainPage() {
                     error={{
                       ...InputErrorAttributes({ inputName: 'section_4_cover', yupError: yupErrors }),
                     }}
+                    disabled={section_4_active === undefined ? false : !section_4_active}
                   />
                 </Grid>
 
@@ -706,6 +803,7 @@ export default function MainPage() {
                 {...register('section_5_title')}
                 label="Section 5 Title"
                 {...InputErrorAttributes({ inputName: 'section_5_title', yupError: yupErrors })}
+                disabled={section_5_active === undefined ? false : !section_5_active}
               />
 
               <Grid container spacing={2}>
@@ -720,6 +818,7 @@ export default function MainPage() {
                     error={{
                       ...InputErrorAttributes({ inputName: 'section_5_card_img', yupError: yupErrors }),
                     }}
+                    disabled={section_5_active === undefined ? false : !section_5_active}
                   />
                 </Grid>
 
@@ -731,6 +830,7 @@ export default function MainPage() {
                     inputName={"section_5_card_card"}
                     yupErrors={yupErrors}
                     addButtonText="Add Card Item"
+                    disabled={section_5_active === undefined ? false : !section_5_active}
                   />
                 </Grid>
               </Grid>
@@ -766,6 +866,7 @@ export default function MainPage() {
                 yupErrors={yupErrors}
                 titleField="section_6_title"
                 subtitleField="section_6_subtitle"
+                disabled={section_6_active === undefined ? false : !section_6_active}
               />
 
               <Grid container spacing={2}>
@@ -776,12 +877,20 @@ export default function MainPage() {
                     setValue={setValue}
                     inputName={'section_6_slider'}
                     yupErrors={yupErrors}
+                    disabled={section_6_active === undefined ? false : !section_6_active}
                   />
                 </Grid>
               </Grid>
             </Card>
 
-            <Button form="form-main" disabled={isLoading || lastMainLoading} variant='contained' type="submit">
+            <Button
+              form="form-main"
+              disabled={isLoading || lastMainLoading}
+              variant="contained"
+              type="submit"
+              color={buttonError ? 'error' : 'primary'}
+              onAnimationEnd={() => setButtonError(false)}
+            >
               Update
             </Button>
           </Stack>

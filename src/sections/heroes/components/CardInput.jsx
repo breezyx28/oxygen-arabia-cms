@@ -9,7 +9,8 @@ const CardInput = ({
     yupErrors,
     addButtonText = 'Add Card Item',
     titleLabel = 'Title',
-    subtitleLabel = 'Subtitle'
+    subtitleLabel = 'Subtitle',
+    disabled = false
 }) => {
     const [items, setItems] = useState(defaultValue ?? []);
 
@@ -47,6 +48,7 @@ const CardInput = ({
                             value={item.title || ''}
                             onChange={(e) => updateArrayItem(items, setItems, index, 'title', e.target.value)}
                             {...InputErrorAttributes({ inputName: `${inputName}[${index}].title`, yupError: yupErrors })}
+                            disabled={disabled}
                         />
                     </Grid>
                     <Grid item xs={12} md={5}>
@@ -56,6 +58,7 @@ const CardInput = ({
                             value={item.subtitle || ''}
                             onChange={(e) => updateArrayItem(items, setItems, index, 'subtitle', e.target.value)}
                             {...InputErrorAttributes({ inputName: `${inputName}[${index}].subtitle`, yupError: yupErrors })}
+                            disabled={disabled}
                         />
                     </Grid>
                     <Grid item xs={12} md={2} display="flex" alignItems="center">
@@ -63,6 +66,7 @@ const CardInput = ({
                             variant="outlined"
                             color="error"
                             onClick={() => removeArrayItem(items, setItems, index)}
+                            disabled={disabled}
                         >
                             Remove
                         </Button>
@@ -73,6 +77,7 @@ const CardInput = ({
                 variant="outlined"
                 onClick={() => addArrayItem(items, setItems, { title: '', subtitle: '' })}
                 sx={{ mt: 1 }}
+                disabled={disabled}
             >
                 {addButtonText}
             </Button>
